@@ -1,0 +1,155 @@
+
+#wrapper{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        180deg,
+        #f8e9f2 0%,
+        #eed7ff 100%
+    );
+
+    font-family:Arial, sans-serif;
+}
+
+#calculator{
+    width:320px;
+    padding:20px;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+
+    background:linear-gradient(
+      180deg,
+      rgba(190,240,245,0.9),
+      rgba(255,155,210,0.9)
+    );
+
+    border-radius:20px;
+
+    box-shadow:
+      0 10px 30px rgba(255,105,180,.25);
+}
+
+#calculator button {
+  cursor: pointer;
+}
+
+#calculator button:hover {
+  opacity: 0.8;
+}
+
+#clear{
+    background:rgba(255,255,255,0.45);
+
+    color:white;
+
+    border:none;
+
+    border-radius:50%;
+
+    width:60px;
+    height:60px;
+}
+
+#equal{
+    grid-column: 3/span 2;
+
+    height:60px;
+
+    border:none;
+    border-radius:30px;
+
+    background:#ff8fc9;
+    color:white;
+
+    font-size:2rem;
+    font-weight:bold;
+}
+.number{
+    height:60px;
+    border:none;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.25);
+
+    color:white;
+
+    font-size:1.8rem;
+    font-weight:bold;
+}
+
+.operator{
+    width:60px;
+    height:60px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.3);
+
+    color:white;
+
+    font-size:1.8rem;
+    font-weight:bold;
+}
+
+#result{
+    grid-column:span 4;
+
+    height:80px;
+    border:none;
+    outline:none;
+
+    text-align:right;
+
+    padding-right:20px;
+
+    font-size:2rem;
+    font-weight:bold;
+
+    background:rgba(255,255,255,0.35);
+
+    border-radius:15px;
+
+    color:#7a136b;
+}
+
+button{
+    transition:0.2s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+button:active{
+    transform:scale(0.95);
+}
+
+#title{
+    font-family: 'Pacifico', cursive;
+
+    font-size: 3rem;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#ff6bb5;
+
+    text-shadow:
+        0 0 10px rgba(255,107,181,.4),
+        0 0 20px rgba(255,107,181,.2);
+}
