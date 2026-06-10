@@ -29,7 +29,7 @@ const buttons = [
   "C", "⌫", "/", "*",
   "7", "8", "9", "-",
   "4", "5", "6", "+",
-  "1", "2", "3",
+  "1", "2", "3", "%",
   ".", "0", "="
 ];
 
@@ -43,9 +43,9 @@ function calculateExpression(expression) {
 
   function precedence(op) {
     if (op === "+" || op === "-") return 1;
-    if (op === "*" || op === "/") return 2;
+    if (op === "*" || op === "/" || op === "%") return 2;
     return 0;
-  }
+}
 
   function applyOperation() {
 
@@ -56,25 +56,32 @@ function calculateExpression(expression) {
     let result;
 
     switch (op) {
-      case "+":
-        result = a + b;
-        break;
+        case "+":
+            result = a + b;
+            break;
 
-      case "-":
-        result = a - b;
-        break;
+        case "-":
+            result = a - b;
+            break;
 
-      case "*":
-        result = a * b;
-        break;
+        case "*":
+            result = a * b;
+            break;
 
-      case "/":
-        if (b === 0) {
-          throw new Error("Division by zero");
+        case "/":
+            if (b === 0) {
+            throw new Error("Division by zero");
+            }
+            result = a / b;
+            break;
+
+        case "%":
+            if (b === 0) {
+            throw new Error("Modulo by zero");
+            }
+            result = a % b;
+            break;
         }
-        result = a / b;
-        break;
-    }
 
     numbers.push(result);
   }
@@ -135,14 +142,15 @@ buttons.forEach((value) => {
   button.style.fontSize = "20px";
 
   // IDs
-  if (value === "C") button.id = "clear";
-  else if (value === "⌫") button.id = "backspace";
-  else if (value === "=") button.id = "equal";
-  else if (value === "+") button.id = "add";
-  else if (value === "-") button.id = "subtract";
-  else if (value === "*") button.id = "multiply";
-  else if (value === "/") button.id = "divide";
-  else button.id = value;
+    if (value === "C") button.id = "clear";
+    else if (value === "⌫") button.id = "backspace";
+    else if (value === "=") button.id = "equal";
+    else if (value === "+") button.id = "add";
+    else if (value === "-") button.id = "subtract";
+    else if (value === "*") button.id = "multiply";
+    else if (value === "/") button.id = "divide";
+    else if (value === "%") button.id = "modulus";
+    else button.id = value;
 
   // Classes
   if (value === "=") {
@@ -216,11 +224,11 @@ document.body.append(wrapper);
 document.addEventListener("keydown", (e) => {
 
   const allowedKeys = [
-    "0","1","2","3","4",
-    "5","6","7","8","9",
-    "+","-","*","/",
-    ".","Enter","Backspace"
-  ];
+  "0","1","2","3","4",
+  "5","6","7","8","9",
+  "+","-","*","/","%",
+  ".","Enter","Backspace"
+];
 
   if (!allowedKeys.includes(e.key)) {
     alert("Only numbers and operators are allowed");
